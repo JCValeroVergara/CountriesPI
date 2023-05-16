@@ -9,7 +9,7 @@ import {
 const initialState = {
   countries: [],
   allCountries: [],
-  filterActivity: 'All',
+  filterContinent: 'All',
 };
 
 const rootReducer = (state = initialState, action) => {

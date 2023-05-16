@@ -31,9 +31,11 @@ export const filterByContinent = (continent) => {
 //ORDER'S
 
 export const orderByName = (payload) => {
+  
   return {
     type: ORDER_COUNTRIES_ALF,
-    payload,
+    payload: payload
+    
   };
 };
 
