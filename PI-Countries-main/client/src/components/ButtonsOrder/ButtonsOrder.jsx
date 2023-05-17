@@ -16,11 +16,9 @@ const ButtonsOrder = () => {
     const handleSort = (event) => {
       dispatch(orderByName(event.target.value));
       setFilters({ ...filters, name: event.target.value });
-      // console.log(event.target.value)
-      // console.log(setFilters)
-    };
-
-  
+      
+  };
+    
    const handleSortPopulation = (event) => {
      dispatch(orderByPopulation(event.target.value));
      setFilters({ ...filters, population: event.target.value });
@@ -39,7 +37,7 @@ const ButtonsOrder = () => {
       <div>
         Número de habitantes
         <select onChange={handleSortPopulation} value={filters.population}>
-          
+          <option value="None"> </option>
           <option value="bigPop">Menor a Mayor</option>
           <option value="smallPop">Mayor a Menor</option>
         </select>

@@ -3,7 +3,9 @@ import {
   GET_COUNTRIES,
   FILTER_BY_CONTINENT,
   ORDER_COUNTRIES_ALF,
-  ORDER_COUNTRIES_POP
+  ORDER_FILTERED_COUNTRIES_ALF,
+  ORDER_COUNTRIES_POP,
+  // ORDER_FILTERED_COUNTRIES_POP
 } from './actions-types';
 
 // ACTION COUNTRIES
@@ -38,6 +40,8 @@ export const orderByName = (payload) => {
     
   };
 };
+
+
 
 export const orderByPopulation = (payload) => {
   return {

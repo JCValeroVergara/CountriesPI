@@ -3,6 +3,8 @@ import {
   FILTER_BY_CONTINENT,
   ORDER_COUNTRIES_ALF,
   ORDER_COUNTRIES_POP,
+  
+  
 } from './actions-types';
 
 
@@ -12,6 +14,8 @@ const initialState = {
   filterContinent: 'All',
 };
 
+
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_COUNTRIES:
@@ -20,7 +24,7 @@ const rootReducer = (state = initialState, action) => {
         countries: action.payload,
         allCountries: action.payload,
       };
-    
+
     case FILTER_BY_CONTINENT:
       const allCountries = state.allCountries;
       const continentFiltered =
@@ -32,25 +36,49 @@ const rootReducer = (state = initialState, action) => {
         countries: continentFiltered,
         filterContinent: action.payload,
       };
-    
-    case ORDER_COUNTRIES_ALF:
-      const countriesToSort = state.filterContinent !== 'All' ? state.countries : state.allCountries;
 
-      const orderAlf =action.payload === 'asc'
-          ? countriesToSort.sort((a, b) =>a.name > b.name ? 1 : b.name > a.name ? -1 : 0)
-          : countriesToSort.sort((a, b) =>a.name > b.name ? -1 : b.name > a.name ? 1 : 0);
+    case ORDER_COUNTRIES_ALF:
+      const countriesToSortAlf =
+        action.payload === 'ALL'
+          ? [...state.allCountries]
+          : [...state.countries];
+
+      const orderAlf =
+        action.payload === 'asc'
+          ? countriesToSortAlf.sort((a, b) =>
+              a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+            )
+          : countriesToSortAlf.sort((a, b) =>
+              a.name > b.name ? -1 : b.name > a.name ? 1 : 0
+            );
 
       return {
         ...state,
         countries: orderAlf,
       };
-      
+
     case ORDER_COUNTRIES_POP:
       const countriesToSortPop =
-        state.filterContinent !== 'All' ? state.countries : state.allCountries;
-      const orderPop = action.payload === 'asc'
-        ? countriesToSortPop.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0)
-        : countriesToSortPop.sort((a, b) => a.name > b.name ? -1 : b.name > a.name ? 1 : 0);
+        action.payload === 'ALL'
+          ? [...state.allCountries]
+          : [...state.countries];
+
+      const orderPop =
+        action.payload === 'bigPop'
+          ? countriesToSortPop.sort((a, b) =>
+              a.population > b.population
+                ? 1
+                : b.population > a.population
+                ? -1
+                : 0
+            )
+          : countriesToSortPop.sort((a, b) =>
+              a.population > b.population
+                ? -1
+                : b.population > a.population
+                ? 1
+                : 0
+            );
 
       return {
         ...state,
@@ -58,7 +86,6 @@ const rootReducer = (state = initialState, action) => {
       };
     default:
       return { ...state };
-
   }
 }
 
