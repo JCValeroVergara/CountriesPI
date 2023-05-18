@@ -1,11 +1,10 @@
 import axios from 'axios'
 import {
-  GET_COUNTRIES,
+  GET_COUNTRIES,  
   FILTER_BY_CONTINENT,
   ORDER_COUNTRIES_ALF,
-  ORDER_FILTERED_COUNTRIES_ALF,
   ORDER_COUNTRIES_POP,
-  // ORDER_FILTERED_COUNTRIES_POP
+  
 } from './actions-types';
 
 // ACTION COUNTRIES
@@ -19,6 +18,9 @@ export const getCountries = () => {
     
   };
 };
+
+
+
 
 //FILTER'S
 

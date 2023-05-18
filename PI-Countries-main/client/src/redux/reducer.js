@@ -12,12 +12,15 @@ const initialState = {
   countries: [],
   allCountries: [],
   filterContinent: 'All',
+  
 };
 
 
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    //CASOS PARA OBTENER INFORMACIÓN
+
     case GET_COUNTRIES:
       return {
         ...state,
@@ -25,6 +28,9 @@ const rootReducer = (state = initialState, action) => {
         allCountries: action.payload,
       };
 
+  
+
+    //CASOS PARA FILTROS, ORDENAMIENTOS, BUSQUEDAS
     case FILTER_BY_CONTINENT:
       const allCountries = state.allCountries;
       const continentFiltered =
@@ -42,7 +48,6 @@ const rootReducer = (state = initialState, action) => {
         action.payload === 'ALL'
           ? [...state.allCountries]
           : [...state.countries];
-
       const orderAlf =
         action.payload === 'asc'
           ? countriesToSortAlf.sort((a, b) =>
@@ -51,7 +56,6 @@ const rootReducer = (state = initialState, action) => {
           : countriesToSortAlf.sort((a, b) =>
               a.name > b.name ? -1 : b.name > a.name ? 1 : 0
             );
-
       return {
         ...state,
         countries: orderAlf,
@@ -62,7 +66,6 @@ const rootReducer = (state = initialState, action) => {
         action.payload === 'ALL'
           ? [...state.allCountries]
           : [...state.countries];
-
       const orderPop =
         action.payload === 'bigPop'
           ? countriesToSortPop.sort((a, b) =>
@@ -79,11 +82,11 @@ const rootReducer = (state = initialState, action) => {
                 ? 1
                 : 0
             );
-
       return {
         ...state,
         countries: orderPop,
       };
+
     default:
       return { ...state };
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './SearchBarCountries.module.css'
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function SearchBarCountriesByName() {
   const [countries, setcountries] = useState([]);
@@ -9,11 +10,12 @@ function SearchBarCountriesByName() {
 
 
   //funcion para traer los datos de db
-  const URL = 'http://localhost:3001/countries';
-
+  
   const showData = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
+    const URL = await axios.get(
+      'http://localhost:3001/countries')
+      const response = await fetch(URL);
+    const data = await response;
     console.log(data);
     setcountries(data);
   };
