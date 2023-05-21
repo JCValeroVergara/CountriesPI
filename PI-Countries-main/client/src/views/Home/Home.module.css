@@ -1,0 +1,12 @@
+.home{
+  
+  background-color: #efe5e5;
+  background-repeat: no-repeat;
+  background-position: center top;
+    display: absolute;
+  height: auto;
+  width: auto;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

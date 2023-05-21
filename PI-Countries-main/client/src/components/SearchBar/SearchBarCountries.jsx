@@ -1,78 +1,45 @@
 import React from 'react';
 import style from './SearchBarCountries.module.css'
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-
-function SearchBarCountriesByName() {
-  const [countries, setcountries] = useState([]);
-  const [search, setSearch] = useState(''); // solo se usa en el filtro
-  const [selectedCountry, setSelectedCountry] = useState(null);// se usa en la seleccion
+import {connect} from 'react-redux'
+import {  useState } from 'react';
+import { getCountriesQuery } from '../../redux/actions';
 
 
-  //funcion para traer los datos de db
-  
-  const showData = async () => {
-    const URL = await axios.get(
-      'http://localhost:3001/countries')
-      const response = await fetch(URL);
-    const data = await response;
-    console.log(data);
-    setcountries(data);
+function SearchBarCountriesByName({ onSearch }) {
+  const [countries, setCountries] = useState('');
+
+  const handleChange = (event) => {
+    const searchValue = event.target.value;
+    setCountries(searchValue);
+    onSearch(searchValue); // Realizar el filtrado al momento de cambiar el valor
   };
 
-  // función de busqueda
-  const searcher = (event) => {
-    setSearch(event.target.value);
-    setSelectedCountry(null);
-    console.log(event.target.value);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSearch(countries);
+    setCountries('');
   };
-
-  //metodo de filtrado
-  const results = !search
-    ? countries
-    : countries.filter((country) =>
-      country.name.toLowerCase().includes(search.toLowerCase())
-    );
-
-  useEffect(() => {
-    showData();
-  }, []);
-
-  useEffect(() => {
-    if (selectedCountry) {
-      setSearch(selectedCountry.name);
-    }
-  }, [selectedCountry]);
 
   return (
-    <div className="container-fluid">
-      <h2>busqueda por nombre:</h2>
-
-      <input
-        type="text"
-        placeholder="Search"
-        onChange={searcher}
-        value={search}
-       
-      />
-
-      {search &&
-        results.map((country) => (
-          <div
-            key={country.id}
-            className={`${style.result} ${
-              selectedCountry && selectedCountry.id === country.id
-                ? style.selected
-                : ''
-            }`}
-            onClick={() => setSelectedCountry(country)}
-          >
-            {country.name}
-          </div>
-        ))}
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className={style.input}
+          placeholder="Search a Country..."
+          value={countries}
+          onChange={handleChange}
+        />
+        <button type="submit"></button>
+      </form>
     </div>
   );
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearch: (name) => dispatch(getCountriesQuery(name)),
+  };
+};
 
-export default SearchBarCountriesByName;
+export default connect(null, mapDispatchToProps)(SearchBarCountriesByName);

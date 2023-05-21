@@ -1,6 +1,10 @@
-.bgtable{
-  background-color: #b495e6;
-}
-.selected {
-  background-color: blue;
+.input{
+  
+   background: silver;
+   border: 1px solid #393939;
+   border-radius: 5px 5px 5px 5px;
+   color: #393939;
+   font-size: 12px;
+   padding: 5px;
+
 }

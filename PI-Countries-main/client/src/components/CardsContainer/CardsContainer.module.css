@@ -5,4 +5,28 @@
   border-radius: 15px;
   flex-wrap: wrap;
   gap: 1em;
+  
+}
+
+.buttonPag {
+    background-color: #456990;
+    border: 1px solid #DDDDDD;
+    color: #010101;
+    padding: 8px 12px;
+    font-size: 10px;
+    border-radius: 5px;
+    margin:1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.buttonPag:hover {
+    background-color: #010101;
+    color: #FFFFFF;
+    text-decoration: solid;
+}
+
+.active {
+    background-color: #333333;
+    color: #FFFFFF;
 }

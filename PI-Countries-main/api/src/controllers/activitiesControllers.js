@@ -6,10 +6,11 @@ const searchActivities = async () => {
   return activities;
 };
 
-const createActivity = async (name, difficulty, duration, season, idPais) => {
+const createActivity = async (name,typeActivity, difficulty, duration, season, idPais) => {
   // Creamos la actividad turística en la base de datos
   const activity = await Activity.create({
     name,
+    typeActivity,
     difficulty,
     duration,
     season,

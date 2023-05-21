@@ -5,7 +5,7 @@ import axios from 'axios';
 const CountryDetail = () => {
   const { id } = useParams();
   const [country, setCountry] = useState({});
-  const [activities, setActivities] = useState([]);
+  const [ setActivities] = useState([]);
 
   useEffect(() => {
     axios(`http://localhost:3001/countries/${id}`)
@@ -25,6 +25,7 @@ const CountryDetail = () => {
        .then((response) => response.data)
        .then((data) => {
          setActivities(data);
+         
        })
        .catch((error) => {
          console.error('Error fetching activities:', error);
@@ -32,7 +33,7 @@ const CountryDetail = () => {
 
     
     return setCountry({})
-  }, [id]);
+  }, [id, setActivities]);
 
   return (
     <div>
@@ -55,6 +56,7 @@ const CountryDetail = () => {
           country.activities.map((activity) => (
             <div key={activity.name}>
               <h4>{activity.name}</h4>
+              <p>Type Activity: {activity.typeActivity}</p>
               <p>Difficulty: {activity.difficulty}</p>
               <p>Duration: {activity.duration}</p>
               <p>Season: {activity.season}</p>

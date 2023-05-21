@@ -10,9 +10,10 @@ const {
 
 const createActivityHandler = async (req, res) => {
   try {
-    const { name, difficulty, duration, season, idPais } = req.body;
+    const { name,typeActivity, difficulty, duration, season, idPais } = req.body;
     const newActivity = await createActivity(
       name,
+      typeActivity,
       difficulty,
       duration,
       season,
@@ -38,10 +39,10 @@ const getActivityHandler = async (req, res) => {
 const updateActivityHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, difficulty, duration, season, idPais } = req.body;
+    const { name,typeActivity, difficulty, duration, season, idPais } = req.body;
 
     // Crear un objeto con los campos actualizados que se proporcionaron
-    const updatedFields = { name, difficulty, duration, season };
+    const updatedFields = { name,typeActivity, difficulty, duration, season };
 
     // Eliminar los campos con valor "undefined" para que no se actualicen en la base de datos
     Object.keys(updatedFields).forEach(

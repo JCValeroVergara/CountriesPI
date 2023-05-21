@@ -11,7 +11,7 @@ const getByIdCountries = async (idPais) => {
     include: [
       {
         model: Activity,
-        attributes: ['name', 'difficulty', 'duration', 'season'],
+        attributes: ['name','typeActivity', 'difficulty', 'duration', 'season'],
         through: { attributes: [] },
       },
     ],
@@ -27,7 +27,7 @@ const getByNameCountries = async (name) => {
     include: [
       {
         model: Activity,
-        attributes: ['name', 'difficulty', 'duration', 'season'],
+        attributes: ['name','typeActivity', 'difficulty', 'duration', 'season'],
         through: { attributes: [] },
       },
     ],

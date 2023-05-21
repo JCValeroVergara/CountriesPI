@@ -18,24 +18,27 @@ module.exports = (sequelize) => {
         allowNull: false,
         comment: 'Name of the activity',
       },
+      typeActivity: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        comment: 'Type of the activity',
+      },
       duration: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: true,
       },
       difficulty: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          min: 1,
-          max: 5,
+          isIn: [['1', '2', '3', '4','5']],
         },
       },
       season: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: false,
         validate: {
-          isIn: [['summer', 'spring', 'winter', 'autumn']],
+          isIn: [['Summer', 'Spring', 'Winter', 'Autumn']],
         },
         comment: 'main season of activity',
       },
