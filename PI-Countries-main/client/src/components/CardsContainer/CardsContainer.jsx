@@ -1,4 +1,4 @@
-import React, { useEffect , useState} from 'react';
+import React, { useEffect } from 'react';
 import Card from '../Card/Card';
 import style from './CardsContainer.module.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -33,10 +33,11 @@ const CardsContainer = () => {
           flags={country.flags}
           name={country.name}
           continent={country.continent}
+          
         />
       ))}
-<br />
-          </div>
+      <br />
+    </div>
   );
 };
 

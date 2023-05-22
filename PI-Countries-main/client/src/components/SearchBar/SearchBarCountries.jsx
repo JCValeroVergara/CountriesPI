@@ -5,24 +5,24 @@ import {  useState } from 'react';
 import { getCountriesQuery } from '../../redux/actions';
 
 
-function SearchBarCountriesByName({ onSearch }) {
+function SearchBarCountriesByName(props) {
+  const { onSearch } = props;
   const [countries, setCountries] = useState('');
 
   const handleChange = (event) => {
-    const searchValue = event.target.value;
-    setCountries(searchValue);
-    onSearch(searchValue); // Realizar el filtrado al momento de cambiar el valor
+    setCountries(event.target.value);
+    onSearch(event.target.value); // Realizar el filtrado al momento de cambiar el valor
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSearch(countries);
-    setCountries('');
-  };
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     onSearch(countries);
+//     setCountries('');
+//   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleChange}>
         <input
           type="text"
           className={style.input}
@@ -30,7 +30,7 @@ function SearchBarCountriesByName({ onSearch }) {
           value={countries}
           onChange={handleChange}
         />
-        <button type="submit"></button>
+        
       </form>
     </div>
   );

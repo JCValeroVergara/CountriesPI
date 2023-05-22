@@ -1,13 +1,19 @@
 .card{
   border: 1px solid black;
-  width: 230px;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 10px;
+}
+.card{
+  border: 1px solid black;
+  width: 250px;
   height: 300px;
   border-radius: 1px;
   text-align: center;
 }
 
 .img{
-  width: 230px;
+  width: 250px;
   height: 150px;
   -webkit-box-shadow: 5px 5px 15px 5px #000000; 
 box-shadow: 5px 5px 15px 5px #000000;

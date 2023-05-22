@@ -9,6 +9,8 @@ import {
   SET_PAGE,
   SET_COUNTRIES_PER_PAGE,
   SET_ORDER,
+  FILTER_BY_TYPE_ACTIVITY,
+  GET_ACTIVITIES,
   // UPDATE_ACTIVITY,
   // CREATE_ACTIVITY,
   // RESET_FORM,
@@ -17,21 +19,21 @@ import {
 
 //PAGINADO
 
-export const setPage = (pageNumber) => {
-  console.log('setPage action', pageNumber); 
-  return {
-    type: SET_PAGE,
-    payload: pageNumber,
-  };
-};
+// export const setPage = (pageNumber) => {
+//   console.log('setPage action', pageNumber); 
+//   return {
+//     type: SET_PAGE,
+//     payload: pageNumber,
+//   };
+// };
 
-export const setCountriesPerPage = (perPage) => {
-  console.log('setCountriesPerPage action', perPage);
-  return {
-    type: SET_COUNTRIES_PER_PAGE,
-    payload: perPage,
-  };
-};
+// export const setCountriesPerPage = (perPage) => {
+//   console.log('setCountriesPerPage action', perPage);
+//   return {
+//     type: SET_COUNTRIES_PER_PAGE,
+//     payload: perPage,
+//   };
+// };
 
 export const setOrder = (order) => {
   return {
@@ -61,7 +63,7 @@ export const getCountries = () => {
  export const getCountryByName = (name) => {
    return {
      type: GET_COUNTRY_BY_NAME,
-     payload: name,
+     payload: name
    };
  };
 
@@ -89,7 +91,14 @@ export const getCountries = () => {
 export const filterByContinent = (continent) => {
   return {
     type: FILTER_BY_CONTINENT,
-    payload: continent,
+    payload: continent
+  };
+};
+
+export const filterByTypeActivity = (typeActivity) => {
+  return {
+    type: FILTER_BY_TYPE_ACTIVITY,
+    payload: typeActivity
   };
 };
 
@@ -107,6 +116,8 @@ export const orderByName = (payload) => {
 
 
 
+
+
 export const orderByPopulation = (payload) => {
   return {
     type: ORDER_COUNTRIES_POP,
@@ -121,6 +132,15 @@ export const orderByPopulation = (payload) => {
 
 //ACTION ACTIVITIES
 
+export const getActivities = () => {
+     return async function (dispatch) {
+          const info = await axios.get('http://localhost:3001/activities');
+          const activities = info.data;
+          console.log('Activities:', activities);
+          dispatch({type: GET_ACTIVITIES, payload: activities})
+     }
+}
+
 
 
 
@@ -133,17 +153,19 @@ export const postActivity = (payload) => {
      difficulty: payload.difficulty,
      duration: payload.duration,
      season: payload.season,
-     countries: payload.countries,
+     idPais: payload.idPais,
   };
 
   try {
     return (async function () {
-      await axios.post('http://localhost:3001/activities', activity);
+       await axios.post('http://localhost:3001/activities', activity);
+       
     })();
   } catch (error) {
     console.log(error);
   }
 };
+
 
 
 

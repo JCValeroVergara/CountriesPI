@@ -13,9 +13,9 @@ const FormCreateActivities = () => {
 
 const allCountries = useSelector((state) => state.allCountries);
 const dispatch = useDispatch;
-const [success, setSuccess] = useState(false);
-const [fail, setFail] = useState(null);
-const [country, setCountry] = useState([]);
+const [success, setSuccess] = useState('');
+// const [fail, setFail] = useState(null);
+const [country_, setCountry] = useState([]);
 const [loading, setLoading] = useState(true);
 
   const [touch, setTouch] = useState({
@@ -39,13 +39,16 @@ const [loading, setLoading] = useState(true);
      const [selectedCountry, setSelectedCountry] = useState('');
 
     const [errors, setErrors] = useState({
-      name: '',
-      typeActivity: '',
-      duration: '',
-      difficulty: '',
-      season: '',
-      idPais: [],
+      // name: '',
+      // typeActivity: '',
+      // duration: '',
+      // difficulty: '',
+      // season: '',
+      // idPais: ,
     });
+   
+   
+   
 
     useEffect(() => {
       setTimeout(() => setLoading(false), 2000);
@@ -78,17 +81,18 @@ const [loading, setLoading] = useState(true);
 
 const handleSubmit = async (event) => {
         event.preventDefault();
-        try {
-          await dispatch(postActivity(inputs));
-          console.log('Agregado correctamente');
-        } catch (error) {
-          console.log('Error al agregar la actividad', error.message);
-        }
+       console.log(errors);
 
-        if(Object.keys(errors).length === 0 && inputs.name && inputs.difficulty && inputs.duration && inputs.idPais && inputs.season){
-            setSuccess(true);
+   if (Object.keys(errors).length === 0 ) {
+            try {
+              await dispatch(postActivity(inputs));
+              console.log('Agregado correctamente');
+            } catch (error) {
+              console.log('Error al agregar la actividad', error.message);
+            }
+            setSuccess('OK');
             setTimeout(() => {
-                setSuccess(false);
+                setSuccess('');
                 setInputs({
                     name: "",
                     typeActivity:'',
@@ -99,24 +103,42 @@ const handleSubmit = async (event) => {
                 });
               }, 3000);
         }else {
-            setSuccess(false);
-            setFail(true);
+            setSuccess('error');
             resetForm();
-            setTimeout(() => {
-                setFail(null);
-                
-            }, 3000);
+           setTimeout(() => {
+               setSuccess('')
+            },3000)
+            
         }
     }
-const handleCountry = (event) => {
-     const { value } = event.target;
-     setSelectedCountry(value);
-  setInputs({
-    ...inputs,
-    idPais: [...inputs.idPais, value],
-  });
-};
+// const handleCountry = (event) => {
+//      const { value } = event.target;
+//      setSelectedCountry(value);
+//   setInputs({
+//     ...inputs,
+//     idPais: [...inputs.idPais, value],
+//   });
+// };
 
+   const handleCountry = (event) => {
+     const { value } = event.target;
+
+     if (!inputs.idPais.includes(value)) {
+       setInputs((prevInputs) => ({
+         ...prevInputs,
+         idPais: [...prevInputs.idPais, value],
+       }));
+     }
+   };
+   
+   const handleRemoveCountry = (id) => {
+     setInputs((prevInputs) => ({
+       ...prevInputs,
+       idPais: prevInputs.idPais.filter((country) => country !== id),
+     }));
+   };
+   
+   
 
     const resetForm = () => {
       setInputs(initialState);
@@ -143,16 +165,16 @@ const handleCountry = (event) => {
          <div className={style.background}>
            <h1 className={style.txt}>Registra una Actividad</h1>
            <form onSubmit={handleSubmit}>
-             {success && (
-               <p className={style.ok}>
-                 <img src={ok} alt="success" />
-               </p>
-             )}
-             {fail !== null && (
+                      {success === 'OK' &&
+                         <p className={style.ok}>
+                            <img src={ok} alt="success" />
+                         </p>}
+            {success === 'error' &&
                <p className={style.fail}>
                  <img src={failed} alt="fail" />
                </p>
-             )}
+             }
+            
 
              <div>
                <label htmlFor="name">Name: </label>
@@ -174,16 +196,16 @@ const handleCountry = (event) => {
                  onChange={handleInputChange}
                >
                  <option value="">Select a type Activity...</option>
-                 <option value="Al Aire Libre">Al Aire Libre</option>
-                 <option value="Aventura">Aventura</option>
-                 <option value="Compras">Compras</option>
+                 <option value="Outdoor">Outdoor</option>
+                 <option value="Adventure">Adventure</option>
+                 <option value="Shopping">Shopping</option>
                  <option value="Cultural">Cultural</option>
-                 <option value="Deportes Acuáticos">Deportes Acuáticos</option>
-                 <option value="Deportes de Winter">Deportes de Winter</option>
-                 <option value="Entretenimiento">Entretenimiento</option>
-                 <option value="Gastronomía">Gastronomía</option>
-                 <option value="Histórico">Histórico</option>
-                 <option value="Naturaleza">Naturaleza</option>
+                 <option value="Watersports">Water sports</option>
+                 <option value="Winter sports">Winter sports</option>
+                 <option value="Entertainment">Entertainment</option>
+                 <option value="Gastronomy">Gastronomy</option>
+                 <option value="Historical">Historical</option>
+                 <option value="Nature">Nature</option>
                </select>
                {touch.typeActivity && errors.typeActivity && (
                  <p className={style.validate}>{errors.typeActivity}</p>
@@ -248,9 +270,9 @@ const handleCountry = (event) => {
                <select
                  className={style.input}
                  name="idPais"
-                 value={inputs.idPais}
+                 value={selectedCountry}
                  onChange={handleCountry}
-                 multiple
+                 //   multiple
                >
                  {allCountries
                    .sort((a, b) => a.name.localeCompare(b.name))
@@ -260,6 +282,23 @@ const handleCountry = (event) => {
                      </option>
                    ))}
                </select>
+
+               <ul>
+                 {inputs.idPais.map((id) => {
+                   const country = allCountries.find(
+                     (country) => country.id === id
+                   );
+                   return (
+                     <li key={id}>
+                       {country && country.name}
+                       <button onClick={() => handleRemoveCountry(id)}>
+                         Remove
+                       </button>
+                     </li>
+                   );
+                 })}
+               </ul>
+
                <input
                  type="text"
                  name="idPais"

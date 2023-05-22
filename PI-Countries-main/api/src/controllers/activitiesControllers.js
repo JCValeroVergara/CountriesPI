@@ -2,7 +2,15 @@ const { Activity, Country } = require('../db');
 const { Op } = require('sequelize');
 
 const searchActivities = async () => {
-  const activities = await Activity.findAll();
+     const activities = await Activity.findAll({
+       include: [
+         {
+           model: Country,
+           attributes: ['id', 'name'],
+           through: { attributes: [] },
+         },
+       ],
+     });
   return activities;
 };
 

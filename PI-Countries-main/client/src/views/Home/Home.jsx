@@ -5,31 +5,37 @@ import FilterCountries from '../../components/Filters/FiltersCountries';
 import ButtonsOrder from '../../components/ButtonsOrder/ButtonsOrder';
 import { useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import { getCountries } from '../../redux/actions';
+import { getCountries,getActivities,getCountriesQuery } from '../../redux/actions';
 
 
 
-const Home = () => {
+const Home = (props) => {
+  
   const dispatch = useDispatch()
 
-  const globalState = useSelector(state => state)
-  console.log(globalState)
-  
   useEffect(() => {
   dispatch(getCountries())
-},[dispatch])
+  },[dispatch])
 
+  useEffect(() => {
+  dispatch(getActivities())
+  }, [dispatch])
+    
+     
+     
   
     return (
       <div className={style.home}>
         <h1>Es la vista de Home</h1>
-       
-        <SearchCountryByName />
-        <FilterCountries />
-        <ButtonsOrder />
-        <CardsContainer />
-        
-
+        <div>
+          <SearchCountryByName onSearch={getCountriesQuery} />
+          <FilterCountries />
+          <ButtonsOrder />
+        </div>
+        <br />
+        <div>
+          <CardsContainer />
+        </div>
       </div>
     );
   };

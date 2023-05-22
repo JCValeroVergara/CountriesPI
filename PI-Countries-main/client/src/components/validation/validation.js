@@ -23,8 +23,8 @@ export default function validate({
     errors.difficulty = 'La dificultad debe ser entre 1 y 5';
   if (season?.length === 0)
     errors.season = 'Se necesita la temporada de la actividad';
-  if (idPais?.length === 0)
-    errors.idPais = 'Se necesitan uno o más países para crear la actividad';
+//   if (idPais?.length === 0)
+//     errors.idPais = 'Se necesitan uno o más países para crear la actividad';
 
   return errors;
 }
