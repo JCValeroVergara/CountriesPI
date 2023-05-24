@@ -84,20 +84,17 @@ const handleSubmit = async (event) => {
        console.log(errors);
 
    if (Object.keys(errors).length === 0 ) {
-            try {
-              await dispatch(postActivity(inputs));
-              console.log('Agregado correctamente');
-            } catch (error) {
-              console.log('Error al agregar la actividad', error.message);
-            }
+      await dispatch(postActivity(inputs));
+      console.log('Agregado correctamente');
+            
             setSuccess('OK');
             setTimeout(() => {
-                setSuccess('');
-                setInputs({
-                    name: "",
-                    typeActivity:'',
-                    difficulty: 0,
-                    duration: "",
+               setSuccess('');
+               setInputs({
+                  name: "",
+                  typeActivity:'',
+                  difficulty: 0,
+                  duration: "",
                      season: "",
                     idPais: [],
                 });
@@ -154,31 +151,34 @@ const handleSubmit = async (event) => {
     });
 
  return (
-   <div className={style.loading}>
+   <div>
      {loading ? (
-       <div className={style.loadingdiv}>
-         <p className={style.loadingp}>Cargando actividades...</p>
-         <img className={style.animation} src={load} alt="loading" />
+       <div className={style.loading}>
+         <div className={style.loadingdiv}>
+           <p className={style.loadingp}>Cargando actividades...</p>
+           <img className={style.animation} src={load} alt="loading" />
+         </div>
        </div>
      ) : (
        <div className={style.container}>
-         <div className={style.background}>
+         <div className={style.container1}>
            <h1 className={style.txt}>Registra una Actividad</h1>
            <form onSubmit={handleSubmit}>
-                      {success === 'OK' &&
-                         <p className={style.ok}>
-                            <img src={ok} alt="success" />
-                         </p>}
-            {success === 'error' &&
+             {success === 'OK' && (
+               <p className={style.ok}>
+                 <img src={ok} alt="success" />
+               </p>
+             )}
+             {success === 'error' && (
                <p className={style.fail}>
                  <img src={failed} alt="fail" />
                </p>
-             }
-            
+             )}
 
              <div>
                <label htmlFor="name">Name: </label>
                <input
+                 className={style.input}
                  type="text"
                  value={inputs.name}
                  onChange={handleInputChange}
@@ -190,7 +190,7 @@ const handleSubmit = async (event) => {
              <div>
                <label htmlFor="typeActivity">Type Activity: </label>
                <select
-                 className={style.input}
+                 className={style.select}
                  name="typeActivity"
                  value={inputs.typeActivity}
                  onChange={handleInputChange}
@@ -211,10 +211,11 @@ const handleSubmit = async (event) => {
                  <p className={style.validate}>{errors.typeActivity}</p>
                )}
              </div>
-
+                  
              <div>
                <label htmlFor="duration">Duration in hours: </label>
                <input
+                 className={style.input2}
                  type="number"
                  min="1"
                  max="24"
@@ -231,6 +232,7 @@ const handleSubmit = async (event) => {
              <div>
                <label htmlFor="difficulty">Level Difficulty: </label>
                <input
+                 className={style.input2}
                  type="number"
                  min="1"
                  max="5"
@@ -265,10 +267,10 @@ const handleSubmit = async (event) => {
 
              <div>
                <label className={style.label} htmlFor="idPais">
-                 País:{' '}
+                 Country (es) :{' '}
                </label>
                <select
-                 className={style.input}
+                 className={style.select}
                  name="idPais"
                  value={selectedCountry}
                  onChange={handleCountry}
@@ -300,6 +302,7 @@ const handleSubmit = async (event) => {
                </ul>
 
                <input
+                 className={style.input}
                  type="text"
                  name="idPais"
                  value={inputs.idPais}

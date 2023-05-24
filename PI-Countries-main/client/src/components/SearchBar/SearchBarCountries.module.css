@@ -1,10 +1,9 @@
-.input{
-  
-   background: silver;
-   border: 1px solid #393939;
-   border-radius: 5px 5px 5px 5px;
-   color: #393939;
-   font-size: 12px;
-   padding: 5px;
-
+.input {
+  background: #f0f0f0; /* Fondo gris tenue */
+  border: 2px solid #e6e3e3;
+  border-radius: 5px;
+  color: #393939;
+  font-size: 20px; /* Tamaño de fuente aumentado */
+  padding: 10px; /* Mayor espaciado interno */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }

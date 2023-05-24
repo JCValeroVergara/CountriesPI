@@ -5,19 +5,29 @@ import {
   ORDER_COUNTRIES_ALF,
   ORDER_COUNTRIES_POP,
   GET_COUNTRY_BY_NAME,
-  GET_COUNTRIES_QUERY,
+   GET_COUNTRIES_QUERY,
+  RESET_STATE,
+
   SET_PAGE,
-  SET_COUNTRIES_PER_PAGE,
+//   SET_COUNTRIES_PER_PAGE,
   SET_ORDER,
   FILTER_BY_TYPE_ACTIVITY,
   GET_ACTIVITIES,
   // UPDATE_ACTIVITY,
   // CREATE_ACTIVITY,
-  // RESET_FORM,
+  
  
 } from './actions-types';
 
 //PAGINADO
+
+export const setPage = (page) => {
+   return {
+      type: SET_PAGE,
+      payload: page,
+   }
+}
+
 
 // export const setPage = (pageNumber) => {
 //   console.log('setPage action', pageNumber); 
@@ -41,6 +51,14 @@ export const setOrder = (order) => {
     payload: order,
   };
 };
+
+export const resetState = () => {
+   return {
+
+      type: RESET_STATE,
+   }
+}
+
 
 // ACTION COUNTRIES
 

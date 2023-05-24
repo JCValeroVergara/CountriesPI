@@ -1,8 +1,28 @@
 
-.mainContainer{
+.mainContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border-radius: 15px;
-  border: 1px solid black;
+  justify-content: center;
+  background-color: #ebebeb;
+}
+
+.mainContainer a {
+  flex: 1;
+  padding: 10px 20px;
+  margin: 0;
+  border-right: 1px solid #ccc;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  background-color: rgba(0, 119, 182, 0.4);
+  font-weight: bold;
+}
+
+.mainContainer a:last-child {
+  border-right: none;
+}
+
+.mainContainer a:hover {
+  background-color: #023047;
+  color: #ccc;
+  cursor: pointer;
 }

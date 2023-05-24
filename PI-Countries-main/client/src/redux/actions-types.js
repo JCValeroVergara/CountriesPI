@@ -12,6 +12,7 @@ export const SET_ORDER = 'SET_ORDER';
 
 
 
+export const RESET_STATE = 'RESET_STATE';
 
 
 
@@ -19,7 +20,6 @@ export const SET_ORDER = 'SET_ORDER';
 export const GET_ACTIVITIES ='GET_ACTIVITIES'
 export const UPDATE_ACTIVITY ='UPDATE_ACTIVITY'
 export const CREATE_ACTIVITY = 'CREATE_ACTIVITY'
-export const RESET_FORM = 'RESET_FORM';
 
 
 

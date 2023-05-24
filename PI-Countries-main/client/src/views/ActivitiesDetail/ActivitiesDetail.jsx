@@ -9,7 +9,7 @@ const ActivitiesDetail = () => {
 
           
     <>
-      <h1>Es la vista de Form de Tourist Activities</h1>
+      <h1>Form de Tourist Activities</h1>
       <FormCreateActivities />
       <br />
       <br />

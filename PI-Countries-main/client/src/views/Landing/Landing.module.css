@@ -2,8 +2,7 @@
   background-image: url("../../assets/image4.png");
   background-size:cover;
   background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgba(206, 147, 186, 0.4);
+  background-repeat: no-repeat;  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,25 +85,20 @@
 
 
 .homeButton {
-  display:flex;
-  flex-direction:column;
-  position: center;
-   top: 40%;
-  padding: 12px 24px;
-  background-color: var(--bg-botton);
-  color:var(--text-300);
-  font-family: "Arial", sans-serif;
-  font-size: 30px;
-  text-decoration: none;
-  border-radius: 6px;
-  border: none;
-  transition: background-color 0.3s ease-in-out;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
 }
 
 .homeButton:hover {
-  background-color: #a2d2ff var(--accent-botton);
-  transform: scale(1.1);
-  box-shadow: 2px 4px 0px var(--accent-100), 7px 4px 0px var(--accent-200);
+  transform: translateY(-5px);
+}
+
+.homeButton:active {
+  transform: scale(0.95);
 }
 
 

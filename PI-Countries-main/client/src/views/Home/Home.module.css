@@ -1,12 +1,62 @@
-.home{
-  
-  background-color: #efe5e5;
+
+body {
+background-image: linear-gradient(to bottom right, #669bbc, #004e89);
+background-size:cover;
+  background-position: center;
   background-repeat: no-repeat;
-  background-position: center top;
-    display: absolute;
+}
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: auto;
   width: auto;
-  flex-direction: row;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centrar verticalmente */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #61a5c2;
+  border-color: aliceblue;
+}
+
+.header h1,
+.header .search,
+.header .filter,
+.header .button-order {
+  flex-grow: 2;
+}
+
+.header h1 {
+  font-family: 'Georgia';
+  font-size: 38px;
+}
+
+.block {
+  flex: 1;
+  margin-right: 30px;
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+}
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+
+.cardsContainer {
+  flex-grow: 1;
+  display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  max-width: 100%; /* Ajusta el ancho máximo según tus necesidades */
+  margin: 0 auto; /* Centra horizontalmente el contenedor */
 }

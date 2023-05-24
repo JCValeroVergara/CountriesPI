@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.select {
+  background: #f0f0f0; /* Fondo gris tenue */
+  border: 2px solid #e6e3e3;
+  border-radius: 5px;
+  color: #393939;
+  font-size: 20px; /* Tamaño de fuente aumentado */
+  padding: 10px; /* Mayor espaciado interno */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  margin-top: 10px;
+}
+.select + .select {
+  margin-top: 20px;
+}
+
+
+
+
+.button {
+  background-color: silver;
+  border: 2px solid #999191;
+  border-radius: 5px;
+  color: #393939;
+  font-size: 16px;
+  padding: 10px 25px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-right: 10px;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}

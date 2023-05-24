@@ -1,9 +1,11 @@
 import React from 'react';
+import style from './FiltersCountries.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterByContinent, filterByTypeActivity } from '../../redux/actions';
+import { filterByContinent, filterByTypeActivity, resetState } from '../../redux/actions';
+import { orderByName, orderByPopulation } from '../../redux/actions';
 
-const FilterCountries = (props) => {
+const FilterCountries = ({setCurrentPage}) => {
 
 
      const dispatch = useDispatch();
@@ -24,17 +26,25 @@ const FilterCountries = (props) => {
             name: '',
           });
      }
-          
+   
+   const handleRestore = () => {
+      dispatch(resetState());
+      dispatch(orderByName("None"));
+      dispatch(orderByPopulation('None'));
+      resetStates()
+   };
 
   const handleContinentFilter = (event) => {
     dispatch(filterByContinent(event.target.value));
-    setFilters({ ...filters, continent: event.target.value });
+     setFilters({ ...filters, continent: event.target.value });
+     setCurrentPage(1)
   };
 
   const handleTypeActiviteFilter = (event) => {
      const value = event.target.value;
-     console.error(value);
-       dispatch(filterByTypeActivity(value));
+     
+     dispatch(filterByTypeActivity(value));
+     setCurrentPage(1)
        setOrden(value);
        setFilters({
          ...filters,
@@ -47,14 +57,19 @@ const FilterCountries = (props) => {
      
 
   return (
-       <div>
-            <div>
-                 <button onClick={()=>{resetStates()}}>Restore</button>
-            </div>
+    <div className={style.container}>
       <div>
-        Filter by continent :
-        <select onChange={handleContinentFilter} value={filters.continent}>
-          <option value="All">Todos</option>
+        <button className={style.button} onClick={handleRestore}>
+          Restore
+        </button>
+      </div>
+      <div>
+        <select
+          onChange={handleContinentFilter}
+          value={filters.continent}
+          className={style.select}
+        >
+          <option value="All">Filter by continent</option>
           <option value="South America">América del Sur</option>
           <option value="North America">América del Norte</option>
           <option value="Africa">África</option>
@@ -65,10 +80,12 @@ const FilterCountries = (props) => {
         </select>
       </div>
       <div>
-        Filter by Activity Type
         <select
-          onChange={handleTypeActiviteFilter}value={orden}>
-          <option value="All">Todos</option>
+          onChange={handleTypeActiviteFilter}
+          value={orden}
+          className={style.select}
+        >
+          <option value="All">Filter by Activity Type</option>
           <option value="Outdoor">Outdoor</option>
           <option value="Adventure">Adventure</option>
           <option value="Shopping">Shopping</option>
