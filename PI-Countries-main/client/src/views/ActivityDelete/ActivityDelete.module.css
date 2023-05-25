@@ -1,0 +1,67 @@
+.container{
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+background-color: linear-gradient(to bottom, #05002d, #05002d);
+
+}
+
+
+.container1{
+position: relative;
+height: 700px;
+width: 850px;
+background-color: rgba(0, 0, 0, 0.1);
+border: 3px solid #DDDD;
+display: flex;
+flex-direction: column;
+backdrop-filter: blur(8px);
+align-items: center;
+margin-top: 2px;
+
+}
+
+.txt {
+  text-align: center;
+}
+
+.dialog-bubble {
+position: relative;
+display: inline-block;
+}
+
+.dialog-bubble::before {
+content: '';
+position: absolute;
+top: -10px;
+left: 50%;
+transform: translateX(-50%);
+border-width: 10px;
+border-style: solid;
+border-color: transparent transparent  rgb(69, 226, 116) transparent;
+}
+
+.dialog-content {
+position: absolute;
+top: -30px;
+left: 50%;
+transform: translateX(-30%);
+background-color: rgb(69, 226, 116);
+color: white;
+padding: 5px 10px;
+border-radius: 4px;
+font-size: 14px;
+}
+
+.dialogContent {
+position: absolute;
+top: -30px;
+left: 50%;
+transform: translateX(-50%);
+background-color:  rgb(69, 226, 116);
+color: white;
+padding: 5px 10px;
+border-radius: 4px;
+font-size: 14px;
+}

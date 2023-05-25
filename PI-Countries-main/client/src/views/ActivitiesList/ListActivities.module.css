@@ -1,0 +1,29 @@
+
+
+.container{
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+background-color: linear-gradient(to bottom, #05002d, #05002d);
+
+}
+
+
+.container1{
+position: relative;
+height: 700px;
+width: 850px;
+background-color: rgba(0, 0, 0, 0.1);
+border: 3px solid #DDDD;
+display: flex;
+flex-direction: column;
+backdrop-filter: blur(8px);
+align-items: center;
+margin-top: 2px;
+overflow-y: scroll
+}
+
+.txt {
+  text-align: center;
+}

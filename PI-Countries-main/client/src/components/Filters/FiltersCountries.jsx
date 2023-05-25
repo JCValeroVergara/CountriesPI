@@ -52,6 +52,15 @@ const FilterCountries = ({setCurrentPage}) => {
        });
   };
   
+    const handleSort = (event) => {
+      dispatch(orderByName(event.target.value));
+      setFilters({ ...filters, name: event.target.value });
+    };
+
+    const handleSortPopulation = (event) => {
+      dispatch(orderByPopulation(event.target.value));
+      setFilters({ ...filters, population: event.target.value });
+    };
      
      
      
@@ -96,6 +105,28 @@ const FilterCountries = ({setCurrentPage}) => {
           <option value="Gastronomy">Gastronomy</option>
           <option value="Historical">Historical</option>
           <option value="Nature">Nature</option>
+        </select>
+      </div>
+      <div>
+        <select
+          className={style.select}
+          onChange={handleSort}
+          value={filters.name}
+        >
+          <option value="None">Alphabetical Order </option>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
+        </select>
+      </div>
+      <div>
+        <select
+          className={style.select}
+          onChange={handleSortPopulation}
+          value={filters.population}
+        >
+          <option value="None">by Population </option>
+          <option value="bigPop">Minor to Major</option>
+          <option value="smallPop">Major to Minor</option>
         </select>
       </div>
     </div>

@@ -1,28 +1,41 @@
 
 .mainContainer {
-  display: flex;
-  justify-content: center;
-  background-color: #ebebeb;
+   display: flex;
+   justify-content: center;
+   background-color: #ebebeb;
 }
 
 .mainContainer a {
-  flex: 1;
-  padding: 10px 20px;
-  margin: 0;
-  border-right: 1px solid #ccc;
-  text-align: center;
-  text-decoration: none;
-  color: #333;
-  background-color: rgba(0, 119, 182, 0.4);
-  font-weight: bold;
+   flex: 1;
+   padding: 10px 20px;
+   margin: 0;
+   border-right: 1px solid #ccc;
+   text-align: center;
+   text-decoration: none;
+   color: #333;
+   background-color: rgba(0, 119, 182, 0.4);
+   font-weight: bold;
 }
 
 .mainContainer a:last-child {
-  border-right: none;
+   border-right: none;
 }
 
 .mainContainer a:hover {
-  background-color: #023047;
-  color: #ccc;
-  cursor: pointer;
+   background-color: #023047;
+   color: #ccc;
+   cursor: pointer;
+}
+
+
+.dropdownContent {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: #ebebeb;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

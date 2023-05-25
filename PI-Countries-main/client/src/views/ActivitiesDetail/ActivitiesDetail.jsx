@@ -3,21 +3,15 @@ import FormCreateActivities from '../../components/FormActivities/FormCreateActi
 const ActivitiesDetail = () => {
 
 
-     
-     return (
-       
-
-          
-    <>
-      <h1>Form de Tourist Activities</h1>
-      <FormCreateActivities />
-      <br />
-      <br />
-      
-      <br />
-      <br />
-    </>
-  );
+   
+   return (
+      <>
+      <div>
+         <FormCreateActivities />
+      </div>
+            
+      </>
+   );
 };
 
 export default ActivitiesDetail;
