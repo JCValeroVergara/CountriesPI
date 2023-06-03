@@ -13,6 +13,7 @@ import {
    GET_ACTIVITIES,
    CREATE_ACTIVITY,
    DELETE_ACTIVITY,
+   // UPDATE_ACTIVITY,
    
 
 
@@ -139,7 +140,6 @@ import {
       return async function (dispatch) {
             const info = await axios.get('http://localhost:3001/activities');
             const activities = info.data;
-            console.log('Activities:', activities);
             dispatch({type: GET_ACTIVITIES, payload: activities})
       }
    }
@@ -173,6 +173,23 @@ export const postActivity = (payload) => {
       }
    };
 }
+
+// ACTUALIZAR ACTIVIDAD
+
+// export const updateActivity = (idValue, formData) => {
+
+//    return async (dispatch) => {
+//       try {
+//          await axios.put(`http://localhost:3001/activities/${idValue}`,formData);
+//          return dispatch({
+//          type: UPDATE_ACTIVITY,
+//          payload: formData,
+//          });
+//       } catch (error) {
+//          console.log(error);
+//       }
+//    };
+// };
 
 //DELETE ACTIVITY
 export const deleteActivity = (id) => {

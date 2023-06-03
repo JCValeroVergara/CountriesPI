@@ -9,13 +9,13 @@ import App from './App';
 
 
 ReactDOM.render(
- 
-    <Provider store={ store}>
+
+      <Provider store={ store}>
       <BrowserRouter>
-          <App />
+            <App />
       </BrowserRouter>
-    </Provider>,
-    
-    document.getElementById('root')
+      </Provider>,
+      
+      document.getElementById('root')
 );
 

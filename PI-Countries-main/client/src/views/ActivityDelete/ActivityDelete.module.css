@@ -2,7 +2,7 @@
 display: flex;
 align-items: center;
 justify-content: center;
-min-height: 100vh;
+min-height: 80vh;
 background-color: linear-gradient(to bottom, #05002d, #05002d);
 
 }
@@ -10,20 +10,56 @@ background-color: linear-gradient(to bottom, #05002d, #05002d);
 
 .container1{
 position: relative;
-height: 700px;
-width: 850px;
+height: 45rem;
+width: 60rem;
 background-color: rgba(0, 0, 0, 0.1);
 border: 3px solid #DDDD;
 display: flex;
 flex-direction: column;
 backdrop-filter: blur(8px);
 align-items: center;
-margin-top: 2px;
-
+margin-top: 0.1rem;
+overflow-y: scroll;
+margin-bottom: 1rem;
 }
 
+.input {
+background: #f0f0f0;
+font-size: 20px;
+padding: 10px;
+border-radius: 5px;
+color: #393939;
+border: 2px solid #e6e3e3;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+width: 100%;
+box-sizing: border-box;
+margin-top: 10px;
+margin-bottom: 25px;
+}
+.button {
+background-color: silver;
+border: 2px solid #999191;
+border-radius: 5px;
+color: #393939;
+font-size: 16px;
+padding: 10px 25px;
+transition: transform 0.3s, box-shadow 0.3s;
+margin-bottom: 2rem;
+}
+
+.button:hover {
+transform: translateY(-3px);
+box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.button:active {
+transform: translateY(1px);
+box-shadow: none;
+}
+
+
 .txt {
-  text-align: center;
+text-align: center;
 }
 
 .dialog-bubble {
@@ -51,7 +87,7 @@ background-color: rgb(69, 226, 116);
 color: white;
 padding: 5px 10px;
 border-radius: 4px;
-font-size: 14px;
+font-size: 1.2rem;
 }
 
 .dialogContent {
@@ -63,5 +99,5 @@ background-color:  rgb(69, 226, 116);
 color: white;
 padding: 5px 10px;
 border-radius: 4px;
-font-size: 14px;
+font-size: 1.2rem;
 }

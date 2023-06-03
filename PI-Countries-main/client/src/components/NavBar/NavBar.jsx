@@ -7,6 +7,7 @@ return (
       <Link to="/home">HOME</Link>
       <Link to="/create"> CREATE ACTIVITY</Link>
       <Link to="/list">ACTIVITIES LIST</Link>
+      <Link to="/update">ACTIVITIES UPDATE</Link>
       <Link to="/delete">ACTIVITY DELETE</Link>
       <Link to="/about">ABOUT</Link>
       <Link to="/">LOGOUT</Link>

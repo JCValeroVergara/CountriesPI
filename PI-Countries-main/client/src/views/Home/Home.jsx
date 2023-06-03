@@ -2,10 +2,10 @@ import style from './Home.module.css'
 import CardsContainer from '../../components/CardsContainer/CardsContainer'
 import SearchCountryByName from '../../components/SearchBar/SearchBarCountries';
 import FilterCountries from '../../components/Filters/FiltersCountries';
-// import ButtonsOrder from '../../components/ButtonsOrder/ButtonsOrder';
 import { useEffect, useState } from 'react';
 import { useDispatch, } from 'react-redux';
-import { getCountries,getActivities,getCountriesQuery } from '../../redux/actions';
+import { getCountries, getActivities, getCountriesQuery } from '../../redux/actions';
+
 
 
 

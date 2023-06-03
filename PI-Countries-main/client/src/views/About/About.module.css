@@ -1,8 +1,9 @@
 .container{
 display: flex;
+flex-direction: column;
 align-items: center;
 justify-content: center;
-min-height: 100vh;
+min-height: 80vh;
 background-color: linear-gradient(to bottom, #05002d, #05002d);
 
 }
@@ -10,8 +11,8 @@ background-color: linear-gradient(to bottom, #05002d, #05002d);
 
 .container1{
 position: relative;
-height: 700px;
-width: 1200px;
+height: 45rem;
+width: 70rem;
 background-color: rgba(0, 0, 0, 0.1);
 border: 3px solid #DDDD;
 display: flex;
@@ -19,51 +20,78 @@ flex-direction: column;
 backdrop-filter: blur(8px);
 align-items: center;
 margin-top: 2px;
+margin-bottom: 1rem;
 }
 
+.header{
+display: flex;
+align-items: center;
+margin-top: 2rem;
+}
+
+
 .unorderedList {
-  list-style-type: none;
-  padding: 0;
-  margin-bottom: 3em;
-  display: flex;
-  flex-direction: row;
+list-style-type: none;
+padding: 0;
+margin-bottom: 3em;
+display: flex;
+flex-direction: row;
 }
 
 .listItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 9vw;
-  height: 9vh;
-  background-color: #fcff4f;
-  padding: 1em;
-  margin: 5px;
-  font-weight: 500;
-  border-radius: 5%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+width: 8vw;
+height: 5vh;
+background-color: #fcff4f;
+padding: 1em;
+margin: 5px;
+font-weight: 400;
+border-radius: 5%;
 }
 .listItem:hover {
-  background-color: #262623c9;
-  color: beige;
+background-color: #262623c9;
+color: beige;
 }
 
 .listItem img {
-  width: 50%;
-  object-fit: cover;
-  margin: 15px;
+width: 50%;
+object-fit: cover;
+margin: 15px;
 }
 
 
 .logoLI,
 .logoGH {
-  display: inline-block;
-  width: 200px; /* Ajusta el tamaño de acuerdo a tus necesidades */
-  height: 200px; /* Ajusta el tamaño de acuerdo a tus necesidades */
+display: inline-block;
+width: 2rem; /* Ajusta el tamaño de acuerdo a tus necesidades */
+height: 2rem; /* Ajusta el tamaño de acuerdo a tus necesidades */
 }
 
 .logoLI img,
 .logoGH img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+width: 100%;
+height: 100%;
+object-fit: contain;
+}
+.footer{
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.text{
+text-align: justify;
+  margin: 4rem;
+  font-size: 1.2rem;
+  justify-content: center;
+}
+
+.imgPerfil{
+   width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  margin: 3rem;
 }

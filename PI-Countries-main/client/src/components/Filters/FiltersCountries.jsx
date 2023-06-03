@@ -8,25 +8,25 @@ import { orderByName, orderByPopulation } from '../../redux/actions';
 const FilterCountries = ({setCurrentPage}) => {
 
 
-     const dispatch = useDispatch();
-     const [ orden,setOrden] = useState('');
-     
-     const [filters, setFilters] = useState({
-          continent: '',
-          typeActivity: '',
-          population: '',
-          name: '',   
-          });
-  
-     const resetStates = () => {
-          setFilters({
+      const dispatch = useDispatch();
+      const [ orden,setOrden] = useState('');
+      
+      const [filters, setFilters] = useState({
+            continent: '',
+            typeActivity: '',
+            population: '',
+            name: '',   
+            });
+
+      const resetStates = () => {
+            setFilters({
             continent: '',
             typeActivity: '',
             population: '',
             name: '',
-          });
-     }
-   
+            });
+      }
+
    const handleRestore = () => {
       dispatch(resetState());
       dispatch(orderByName("None"));
@@ -34,103 +34,103 @@ const FilterCountries = ({setCurrentPage}) => {
       resetStates()
    };
 
-  const handleContinentFilter = (event) => {
-    dispatch(filterByContinent(event.target.value));
-     setFilters({ ...filters, continent: event.target.value });
-     setCurrentPage(1)
-  };
+   const handleContinentFilter = (event) => {
+      dispatch(filterByContinent(event.target.value));
+      setFilters({ ...filters, continent: event.target.value });
+      setCurrentPage(1)
+   };
 
-  const handleTypeActiviteFilter = (event) => {
-     const value = event.target.value;
-     
-     dispatch(filterByTypeActivity(value));
-     setCurrentPage(1)
-       setOrden(value);
-       setFilters({
+   const handleTypeActiviteFilter = (event) => {
+      const value = event.target.value;
+      
+      dispatch(filterByTypeActivity(value));
+      setCurrentPage(1)
+         setOrden(value);
+         setFilters({
          ...filters,
          typeActivity: value,
-       });
-  };
-  
-    const handleSort = (event) => {
+         });
+   };
+
+      const handleSort = (event) => {
       dispatch(orderByName(event.target.value));
       setFilters({ ...filters, name: event.target.value });
-    };
+      };
 
-    const handleSortPopulation = (event) => {
+      const handleSortPopulation = (event) => {
       dispatch(orderByPopulation(event.target.value));
       setFilters({ ...filters, population: event.target.value });
-    };
-     
-     
-     
+      };
+      
+      
+      
 
-  return (
-    <div className={style.container}>
+   return (
+      <div className={style.container}>
       <div>
-        <button className={style.button} onClick={handleRestore}>
-          Restore
-        </button>
+         <button className={style.button} onClick={handleRestore}>
+            Restore
+         </button>
       </div>
       <div>
-        <select
-          onChange={handleContinentFilter}
-          value={filters.continent}
-          className={style.select}
-        >
-          <option value="All">Filter by continent</option>
-          <option value="South America">América del Sur</option>
-          <option value="North America">América del Norte</option>
-          <option value="Africa">África</option>
-          <option value="Asia">Asia</option>
-          <option value="Europe">Europa</option>
-          <option value="Oceania">Oceanía</option>
-          <option value="Antarctica">Antártica</option>
-        </select>
+         <select
+            onChange={handleContinentFilter}
+            value={filters.continent}
+            className={style.select}
+         >
+            <option value="All">Filter by continent</option>
+            <option value="South America">América del Sur</option>
+            <option value="North America">América del Norte</option>
+            <option value="Africa">África</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europa</option>
+            <option value="Oceania">Oceanía</option>
+            <option value="Antarctica">Antártica</option>
+         </select>
       </div>
       <div>
-        <select
-          onChange={handleTypeActiviteFilter}
-          value={orden}
-          className={style.select}
-        >
-          <option value="All">Filter by Activity Type</option>
-          <option value="Outdoor">Outdoor</option>
-          <option value="Adventure">Adventure</option>
-          <option value="Shopping">Shopping</option>
-          <option value="Cultural">Cultural</option>
-          <option value="Watersports">Water sports</option>
-          <option value="Winter sports">Winter sports</option>
-          <option value="Entertainment">Entertainmenta</option>
-          <option value="Gastronomy">Gastronomy</option>
-          <option value="Historical">Historical</option>
-          <option value="Nature">Nature</option>
-        </select>
+         <select
+            onChange={handleTypeActiviteFilter}
+            value={orden}
+            className={style.select}
+         >
+            <option value="All">Filter by Activity Type</option>
+            <option value="Outdoor">Outdoor</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Watersports">Water sports</option>
+            <option value="Winter sports">Winter sports</option>
+            <option value="Entertainment">Entertainmenta</option>
+            <option value="Gastronomy">Gastronomy</option>
+            <option value="Historical">Historical</option>
+            <option value="Nature">Nature</option>
+         </select>
       </div>
       <div>
-        <select
-          className={style.select}
-          onChange={handleSort}
-          value={filters.name}
-        >
-          <option value="None">Alphabetical Order </option>
-          <option value="asc">A-Z</option>
-          <option value="desc">Z-A</option>
-        </select>
+         <select
+            className={style.select}
+            onChange={handleSort}
+            value={filters.name}
+         >
+            <option value="None">Alphabetical Order </option>
+            <option value="asc">A-Z</option>
+            <option value="desc">Z-A</option>
+         </select>
       </div>
       <div>
-        <select
-          className={style.select}
-          onChange={handleSortPopulation}
-          value={filters.population}
-        >
-          <option value="None">by Population </option>
-          <option value="bigPop">Minor to Major</option>
-          <option value="smallPop">Major to Minor</option>
-        </select>
+         <select
+            className={style.select}
+            onChange={handleSortPopulation}
+            value={filters.population}
+         >
+            <option value="None">by Population </option>
+            <option value="bigPop">Minor to Major</option>
+            <option value="smallPop">Major to Minor</option>
+         </select>
       </div>
-    </div>
-  );
+      </div>
+   );
 };
 
 export default FilterCountries;

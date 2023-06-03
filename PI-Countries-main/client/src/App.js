@@ -1,8 +1,8 @@
 import './App.css';
 import { Route, Switch, useLocation } from 'react-router-dom';
-import { Landing, Home, ActivitiesDetail, CountryDetail, About, ActivitiesList, ActivityDelete, NotFound } from './views/index';
+import { Landing, Home, ActivitiesDetail, CountryDetail, About, ActivitiesList,ActivityUpdate, ActivityDelete, NotFound } from './views/index';
 import NavBar from './components/NavBar/NavBar';
-
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -17,11 +17,13 @@ function App() {
             <Route exact path="/create" component={ActivitiesDetail} />
             <Route exact path="/list" component={ActivitiesList} />
             <Route exact path="/delete" component={ActivityDelete} />
+            <Route exact path="/update" component={ActivityUpdate} />
             <Route exact path="/detail/:id" component={CountryDetail} />
             <Route exact path="/about" component={About} />
             <Route path="/home" render={() => <Home />} />
             <Route component={NotFound} />
-         </Switch>
+            </Switch>
+            <Footer/>
       </div>
    </div>
    );

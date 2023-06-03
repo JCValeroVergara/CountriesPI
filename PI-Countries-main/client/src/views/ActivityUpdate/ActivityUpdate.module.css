@@ -1,4 +1,3 @@
-
 .container{
 display: flex;
 align-items: center;
@@ -11,15 +10,15 @@ background-color: linear-gradient(to bottom, #05002d, #05002d);
 
 .container1{
 position: relative;
-height: 600px;
-width: 800px;
+height: 700px;
+width: 700px;
 background-color: rgba(0, 0, 0, 0.1);
 border: 3px solid #DDDD;
 display: flex;
 flex-direction: column;
 backdrop-filter: blur(8px);
 align-items: center;
-margin-top: 1rem;
+margin-top: 2px;
 }
 
 
@@ -66,7 +65,7 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 width: 100%;
 box-sizing: border-box;
 margin-top: 5px;
-margin-bottom: 10px;
+margin-bottom: 25px;
 }
 
 .input2 {
@@ -79,7 +78,7 @@ border: 2px solid #e6e3e3;
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 width: 60px;
 box-sizing: border-box;
-margin-bottom: 10px;
+margin-bottom: 25px;
 margin-top: 5px;
 }
 
@@ -91,7 +90,7 @@ color: #393939;
 font-size: 20px; /* Tamaño de fuente aumentado */
 padding: 10px; /* Mayor espaciado interno */
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-margin-top: 10px;
+margin-top: 5px;
 }
 .select + .select {
 margin-top: 20px;
@@ -117,11 +116,6 @@ box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 .button:active {
 transform: translateY(1px);
 box-shadow: none;
-}
-.button:disabled {
-  /* Agrega aquí los estilos específicos para el estado disabled */
-  opacity: 0.5; /* Ejemplo: reduce la opacidad del botón */
-  cursor: not-allowed; /* Ejemplo: cambia el cursor a "no permitido" */
 }
 
 .buttonDele {
@@ -170,7 +164,7 @@ background-color: red;
 color: white;
 padding: 5px 10px;
 border-radius: 4px;
-font-size: 1.2rem;
+font-size: 14px;
 }
 
 .dialogContent {
@@ -182,5 +176,5 @@ background-color: red;
 color: white;
 padding: 5px 10px;
 border-radius: 4px;
-font-size: 1.2rem;
+font-size: 14px;
 }
